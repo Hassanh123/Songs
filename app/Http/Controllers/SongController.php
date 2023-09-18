@@ -42,7 +42,7 @@ class SongController extends Controller
             throw new Exception('Song is niet toegevoegd');
         }
  
-       return view('show');
+    
     }
 
 
