@@ -6,10 +6,18 @@
     <title>Document</title>
 </head>
 <body>
-    
 
 <h1> Maak hier een nieuw lied aan </h1>
-<input type="text">
-<button type="submit">CREATE </button>
+<form method="post" action="/store">
+    @csrf
+    <label for="title">Titel:</label>
+    <input type="text" name="title" id="title">
+    <label for="singer">Artiest:</label>
+    <input type="text" name="singer" id="singer">
+    <button type="submit">CREATE</button>
+</form>
+
+
+
 </body>
 </html>

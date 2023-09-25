@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SongController;
+use App\Models\Song;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,18 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/songs', [SongController::class, 'index']);
-Route::get('songs/{id}/edit', [SongController::class, 'update'])->name('update');
-Route::get('songs/create', [SongController::class, 'create']);
-Route::get('songs/{id}', [SongController::class,'show']);
-
-
+Route::get('/index', [SongController::class, 'index']);
+Route::post('/store', [SongController::class, 'store']);
+Route::get('/index/create', [SongController::class, 'create']);
+Route::get('/index/{id}',  [SongController::class, 'show'])->name('show');
 
 
 Route::get('/songs', function () {
-    $songs = ['Living on a prayer', 'Nothing else matters', 'Thunderstruck', 'Back in black', 'Ace of spades'];
-    return view('index', compact('songs'));
-});
+  $titles = Song::pluck('title');
+   return view('index', compact('titles'));
+ });
 
 Route::get('/', function () {
     return view('welcome');

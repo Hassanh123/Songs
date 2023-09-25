@@ -7,15 +7,14 @@
 </head>
 
 <body>
-    <h1>Lijst  met alle nieuwe songs</h1>
+    <h1>Lijst met alle titels</h1>
 
     <ul>
-        <div class="songs">
-            @foreach ($songs as $song)
-            <li>{{ $song }}</li>
-            @endforeach
-        </div>
+        @foreach ($songs as $song)
+        <li><a href="{{ route('show', ['id' => $song->id]) }}">{{ $song->title }}</a></li>
+        @endforeach
     </ul>
+
 </body>
 
 </html>
