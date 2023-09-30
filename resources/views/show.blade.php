@@ -8,8 +8,10 @@
 </head>
 <body>
     <h1>Zie hier het geselecteerde lied:</h1>
-    <p>Singer: {{ $song->singer }}</p>
-    <p>Title: {{ $song->title }}</p>
+    <p>{{ $song->title }} - {{ $song->singer }}</p>
+
+
+
 </body>
 
 </html>

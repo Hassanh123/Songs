@@ -16,16 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/index', [SongController::class, 'index']);
+Route::get('/index', [SongController::class, 'index'])->name('songs.index');
 Route::post('/store', [SongController::class, 'store']);
 Route::get('/index/create', [SongController::class, 'create']);
-Route::get('/index/{id}',  [SongController::class, 'show'])->name('show');
+Route::get('/songs/{id}/show', [SongController::class, 'show'])->name('show');
+Route::delete('/delete/{id}', [SongController::class, 'destroy'])->name('songs.destroy');
+Route::get('/songs/{id}/edit', [SongController::class, 'edit'])->name('songs.edit');
+Route::put('/songs/{id}', [SongController::class, 'update'])->name('songs.update');
 
 
-Route::get('/songs', function () {
-  $titles = Song::pluck('title');
-   return view('index', compact('titles'));
- });
+
+
 
 Route::get('/', function () {
     return view('welcome');

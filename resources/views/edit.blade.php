@@ -3,24 +3,21 @@
 
 <head>
     <title>Bewerkpagina</title>
+ 
+
 </head>
 
 <body>
+<h1> bewerk hier het lied</h1>
 
-    <h1>Bewerk het lied</h1>
+    <form method="POST" action="{{ route('songs.update', $song->id) }}">
+        @csrf
+        @method('PUT')
 
-    <form method="POST" action="{{ route('update', 1) }}"> 
+        <input type="text" name="title" value="{{ $song->title }}" required>
+        <input type="text" name="singer" value="{{ $song->singer }}" required>
 
-        <select name="title" id="title">
-            @php
-                $songs = ['Living on a prayer', 'Nothing else matters', 'Thunderstruck', 'Back in black', 'Ace of spades'];
-                foreach ($songs as $songOption) {
-                    echo "<option value=\"$songOption\">$songOption</option>";
-                }
-            @endphp
-        </select>
-
-        <button type="submit">Update Song</button>
+        <button type="submit">Bewerken</button>
     </form>
 
 </body>
